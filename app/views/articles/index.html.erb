@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%= t("article.list") %></h1>
+
+<table>
+  <thead>
+    <tr>
+      <th><%= t("article.title") %></th>
+      <th><%= t("article.body") %></th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @articles.each do |article| %>
+      <tr>
+        <td><%= article.title %></td>
+        <td><%= article.body %></td>
+        <td><%= link_to t("crud.show"), article %></td>
+        <td><%= link_to t("crud.edit"), edit_article_path(article) %></td>
+        <td><%= link_to t("crud.delete"), article, method: :delete, data: { confirm: t("crud.confirm") } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to t("crud.new"), new_article_path %>
